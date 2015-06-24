@@ -1,0 +1,124 @@
+.container{
+	margin-left:50px;
+	margin-top: 50px;
+	width:530px
+}
+/* buttons messages score 
+.gameInfo{
+	margin:0;
+	padding:0;
+	font-family: arial;
+	width:480px;
+
+}
+*/
+#newGame{
+	float: left;
+	padding: 5px;
+	background: #9BD5FC;
+	border-radius: 5px;
+	font-size: 110%;
+	
+}
+#score{
+	float: left;
+	margin-left: 50px;
+	padding: 10px;
+	font-size: 120%;
+}
+#bestScore{
+	float: left;
+	margin-left: 50px;
+	padding: 10px;
+	font-size: 120%;
+}
+#gameOver{
+	background: #fff;
+	bottom:0;
+	left:0;
+	position: absolute;
+	top:0;
+	right:0;
+	/*background: rgba(255,0,0,.7);*/
+
+	
+}
+
+/*
+#newGame:after{
+	content: " ";/* Older browsers do not suport empty content *//*
+	visibility: hidden;
+	display: block;
+	clear: both;
+	font-size: 0;
+	height: 0;
+}
+*/
+/* board */
+#board{
+	margin:15px;
+	display:inline-block;
+	border: solid 5px #000;
+	border-radius: 10px;
+	width: auto;
+	height: auto;
+}
+.row{
+	overflow: auto;
+	background-color:#000; 
+	line-height: 100px;
+}
+.tile{
+	float:left;
+	width: 100px;
+	height: 100px;
+	background-color: #ccc;
+	border: solid 5px #000;
+	border-radius: 10px;
+	text-align: center;
+	font-family: arial;
+	font-size: 200%;
+	color: #eee;
+}
+.tile-2{
+	background-color: #D062F5;
+}
+.tile-4{
+	background-color: #AA4BF2;
+}
+.tile-8{
+	background-color: #9357DE;
+}
+.tile-16{
+	background-color: #6030E6;
+}
+.tile-32{
+	background-color: #654EF5;
+}
+.tile-64{
+	background-color: #495DF5;
+}
+.tile-128{
+	font-size: 200%;
+	background-color: #578DF2;
+}
+.tile-256{
+	font-size: 200%;
+	background-color: #30C8F2;
+}
+.tile-512{
+	font-size: 200%;
+	background-color: #5FE8E1;
+}
+.tile-1024{
+	font-size: 200%;
+	background-color: #5ECCA5;
+}/**/
+.tile-2048{
+	font-size: 200%;
+	background-color: #62A67B;
+}
+.tile-4096{
+	font-size: 200%;
+	background-color: #3D994B;
+}
