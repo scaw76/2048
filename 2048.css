@@ -1,0 +1,111 @@
+.centerContent{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	padding:10px;
+}
+.gameInfo{
+	font-size: 110%;
+}
+#newGame{
+	float: left;
+	padding: 5px;
+	margin-right: 30px;
+	background: #9BD5FC;
+	border-radius: 5px;	
+}
+#score{
+	margin-right: 30px;
+	padding: 10px;
+	font-size: 120%;
+	width:100px;
+}
+#bestScore{
+	padding: 10px;
+	font-size: 120%;
+	width:100px;
+}
+#game-over {
+  background: rgba(90, 210, 210, 0.8);
+  border-radius: 8px;
+  bottom: 0;
+  color: #0A4F5A;
+  font-size: 60px;
+  left: 0;
+  padding-top: 190px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+}
+/* board */
+#board{
+	position:relative;
+	margin:15px;
+	display:inline-block;
+	border: solid 5px #000;
+	border-radius: 10px;
+	width: auto;
+	height: auto;
+}
+.row{
+	overflow: auto;
+	background-color:#000; 
+	line-height: 100px;
+}
+.tile{
+	float:left;
+	width: 100px;
+	height: 100px;
+	background-color: #ccc;
+	border: solid 5px #000;
+	border-radius: 10px;
+	text-align: center;
+	font-family: arial;
+	font-size: 200%;
+	color: #eee;
+}
+.tile-2{
+	background-color: #D062F5;
+}
+.tile-4{
+	background-color: #AA4BF2;
+}
+.tile-8{
+	background-color: #9357DE;
+}
+.tile-16{
+	background-color: #6030E6;
+}
+.tile-32{
+	background-color: #654EF5;
+}
+.tile-64{
+	background-color: #495DF5;
+}
+.tile-128{
+	font-size: 200%;
+	background-color: #578DF2;
+}
+.tile-256{
+	font-size: 200%;
+	background-color: #30C8F2;
+}
+.tile-512{
+	font-size: 200%;
+	background-color: #5FE8E1;
+}
+.tile-1024{
+	font-size: 200%;
+	background-color: #5ECCA5;
+}
+.tile-2048{
+	font-size: 200%;
+	background-color: #62A67B;
+}
+.tile-4096{
+	font-size: 200%;
+	background-color: #3D994B;
+}
