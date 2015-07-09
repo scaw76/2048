@@ -1,0 +1,17 @@
+/bin
+/obj
+*.user
+*.suo
+*.sln.cache
+Thumbs.db
+*~
+*.o
+*.pyc
+.DS_Store
+._.DS_Store
+._*
+*.swap
+*.swp
+*.[oa]
+*a.out
+*.d
