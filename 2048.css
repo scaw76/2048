@@ -1,61 +1,48 @@
-.container{
-	margin-left:50px;
-	margin-top: 50px;
-	width:530px
+.centerContent{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	padding:10px;
 }
-/* buttons messages score 
 .gameInfo{
-	margin:0;
-	padding:0;
-	font-family: arial;
-	width:480px;
-
+	font-size: 110%;
 }
-*/
 #newGame{
 	float: left;
 	padding: 5px;
+	margin-right: 30px;
 	background: #9BD5FC;
-	border-radius: 5px;
-	font-size: 110%;
-	
+	border-radius: 5px;	
 }
 #score{
-	float: left;
-	margin-left: 50px;
+	margin-right: 30px;
 	padding: 10px;
 	font-size: 120%;
+	width:100px;
 }
 #bestScore{
-	float: left;
-	margin-left: 50px;
 	padding: 10px;
 	font-size: 120%;
+	width:100px;
 }
-#gameOver{
-	background: #fff;
-	bottom:0;
-	left:0;
-	position: absolute;
-	top:0;
-	right:0;
-	/*background: rgba(255,0,0,.7);*/
-
-	
+#game-over {
+  background: rgba(90, 210, 210, 0.8);
+  border-radius: 8px;
+  bottom: 0;
+  color: #0A4F5A;
+  font-size: 60px;
+  left: 0;
+  padding-top: 190px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
 }
-
-/*
-#newGame:after{
-	content: " ";/* Older browsers do not suport empty content *//*
-	visibility: hidden;
-	display: block;
-	clear: both;
-	font-size: 0;
-	height: 0;
-}
-*/
 /* board */
 #board{
+	position:relative;
 	margin:15px;
 	display:inline-block;
 	border: solid 5px #000;
@@ -113,7 +100,7 @@
 .tile-1024{
 	font-size: 200%;
 	background-color: #5ECCA5;
-}/**/
+}
 .tile-2048{
 	font-size: 200%;
 	background-color: #62A67B;
