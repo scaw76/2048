@@ -2,7 +2,7 @@ var boardSize = 4 ;
 var score = 0 ;
 var bestScore = 0;
 var won = false;
-
+alert("here");
 var board = {
 };
 
