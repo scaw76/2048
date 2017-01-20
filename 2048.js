@@ -68,7 +68,7 @@ var combine = function (numbers){
 		while(numbers.length>0){
 			if(numbers[0] === numbers[1]){
 				// add them together
-				var sum = numbers[0] + numbers[1]
+				var sum = numbers[0] + numbers[1];
 				console.log(sum);
 				if(sum == 64){
 					console.log("you won!");
@@ -211,7 +211,7 @@ var gameOver = function (){
 	}
 	else if(possibleCombination()){
 		//console.log("possible combination");
-		return false
+		return false;
 	}
 	return true;
 };
