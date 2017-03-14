@@ -2,7 +2,6 @@ var boardSize = 4 ;
 var score = 0 ;
 var bestScore = 0;
 var won = false;
-alert("here");
 var board = {
 };
 
@@ -69,11 +68,6 @@ var combine = function (numbers){
 			if(numbers[0] === numbers[1]){
 				// add them together
 				var sum = numbers[0] + numbers[1];
-				console.log(sum);
-				if(sum == 64){
-					console.log("you won!");
-					won = true;
-				}
 				updateScore(sum);
 				// push sum onto newNumbers
 				newNumbers.push(sum);
@@ -93,29 +87,36 @@ var combine = function (numbers){
 	}
 	return newNumbers;
 };
-
+var wonMessage = function (){
+	//alert("You Win!");
+	console.log("wonMessage");
+	$("<div></div>").appendTo("#board")
+					.attr("id","game-over")
+					.text("You Win!")
+					.hide()
+					.fadeIn();
+					
+};
 var refreshBoard = function(){
-	var won = false;
+	//console.log("refreshBoard");
 	for(var row = 0; row < boardSize; row++){
 		for(var col = 0; col < boardSize; col++){
 			var key = tileKey(col,row);
 			var val = board[key];
-			console.log("val = ");
-			console.log(val);
-			if(val == 16){
-				console.log("won");
-				alert("here");
+			//console.log(val === 32);
+			//console.log(won);
+			if(val === 2048 && !won){
+				won = true;
+				console.log("won val = ");
+				console.log(val);
 			}
+			//console.log(won);
 			var $tile = $("#" + key);
 			$tile.removeClass().addClass("tile").text("");
 			$tile.text(val).addClass("tile-" + val);
 		}
 	}
 	updateScore();
-	if(won){
-		alert("you won!");
-		wonMessage();
-	}
 };
 
 var combineBack = function (nums){
@@ -238,6 +239,7 @@ var updateScore = function (increment){
 var newGame = function (){
 	board = {};
 	score = 0;
+	won = false;
 	addTile();
 	addTile();		
 	refreshBoard();
@@ -271,16 +273,7 @@ var gameOverMessage = function (){
 					.hide()
 					.fadeIn();
 };
-var wonMessage = function (){
-	alert("You Win!");
-	/*
-	$("<div></div>").appendTo("#board")
-					.attr("id","game-over")
-					.text("You Win!")
-					.hide()
-					.fadeIn();
-					*/
-};
+
 
 var keyPressed = function (dir){
 	var oldBoard = $.extend({},board);
@@ -301,6 +294,9 @@ var keyPressed = function (dir){
 		if (gameOver()) {
 			gameOverMessage();
 		}
+		if(won){
+			wonMessage();
+		}
 	}
 };
 
@@ -315,7 +311,7 @@ $(document).ready(function(){
 	})
 
 	$(document).keydown(function (e){
-		console.log("Pushed key. "+ e.which);
+		//console.log("Pushed key. "+ e.which);
 		switch(e.which){
 			case 37://left
 			case 65://a
