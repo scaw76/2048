@@ -1,14 +1,16 @@
+// global vars
 var boardSize = 4 ;
 var score = 0 ;
 var bestScore = 0;
 var won = false;
-var board = {
-};
+var board = {};
 
+// get key for tile
 var tileKey = function (col,row){
 	return "tile" + col + "-" + row;
 };
 
+// create the board
 var createBoard = function(){
 	var $board = $("#board");
 	for(var row = 0; row < boardSize; row++){
@@ -22,7 +24,7 @@ var createBoard = function(){
 	}
 };
 
-
+// get array of nums in row
 var getrow = function (row){
 	var nums = [];
 	for(var col = 0 ; col<boardSize;col++){
@@ -34,7 +36,7 @@ var getrow = function (row){
 	}
 	return nums;
 }
-
+// get array of nums in col
 var getcol = function (col){
 	var nums = [];
 	for(var row = 0 ; row<boardSize;row++){
@@ -46,21 +48,21 @@ var getcol = function (col){
 	}
 	return nums;
 }
-
+// set row in board
 var setrow = function (newnums, row){
 	for(var col = 0 ; col<boardSize;col++){
 		var key = tileKey(col,row);
 		board[key] = newnums[col];
 	}
 }
-
+// set col in board
 var setcol = function (newnums, col){
 	for(var row = 0 ; row<boardSize;row++){
 		var key = tileKey(col,row);
 		board[key] = newnums[row];
 	}
 }
-
+// combine numbers array
 var combine = function (numbers){
 	var newNumbers = [];
 	// combine
@@ -87,6 +89,7 @@ var combine = function (numbers){
 	}
 	return newNumbers;
 };
+// display won message
 var wonMessage = function (){
 	//alert("You Win!");
 	console.log("wonMessage");
@@ -97,6 +100,7 @@ var wonMessage = function (){
 					.fadeIn();
 					
 };
+// update view of board
 var refreshBoard = function(){
 	//console.log("refreshBoard");
 	for(var row = 0; row < boardSize; row++){
@@ -118,11 +122,11 @@ var refreshBoard = function(){
 	}
 	updateScore();
 };
-
+// combine in reverse
 var combineBack = function (nums){
 	return combine(nums.reverse()).reverse();
 };
-
+// left
 var moveLeft = function (){
 	for(var n = 0;n<boardSize;n++){
 		var old = getrow(n);
@@ -131,7 +135,7 @@ var moveLeft = function (){
 	}
 	refreshBoard();
 };
-
+// up
 var moveUp = function (){
 	for(var n = 0;n<boardSize;n++){
 		var old = getcol(n);
@@ -139,7 +143,7 @@ var moveUp = function (){
 		setcol(newnum,n);
 	}
 };
-
+// right
 var moveRight = function (){
 	for(var n = 0;n<boardSize;n++){
 		var old = getrow(n);
@@ -147,7 +151,7 @@ var moveRight = function (){
 		setrow(newnum,n);
 	}
 };
-
+// down
 var moveDown = function (){
 	for(var n = 0;n<boardSize;n++){
 		var old = getcol(n);
@@ -155,7 +159,7 @@ var moveDown = function (){
 		setcol(newnum,n);
 	}
 };
-
+// get empty tiles
 var getEmpty = function(){
 	var empty = [];
 	for(var row = 0; row < boardSize; row++){
@@ -168,6 +172,7 @@ var getEmpty = function(){
 	return empty;
 };
 
+// add a new tile to board
 var addTile = function(){
 	var empty = getEmpty();
 	var tile = Math.floor(Math.random() * empty.length);
@@ -176,7 +181,7 @@ var addTile = function(){
 	
 	board[index] = twoorfour;
 };
-
+// check for change to board
 var hasChanged = function (oldBoard){
 	for(var row = 0; row < boardSize; row++){
 		for(var col = 0; col < boardSize; col++){
@@ -188,7 +193,7 @@ var hasChanged = function (oldBoard){
 	}
 	return false;
 };
-
+// check if there are possible combinations
 var possibleCombination = function (){
 	for(var row = 0; row < boardSize; row++){
 		for(var col = 0; col < boardSize; col++){
@@ -202,7 +207,7 @@ var possibleCombination = function (){
 	}
 	return false;
 };
-
+// check if game is over
 var gameOver = function (){
 	var empty = getEmpty();
 	//var f = ["tile1-1"];
@@ -216,13 +221,13 @@ var gameOver = function (){
 	}
 	return true;
 };
-
+// save
 var saveData = function () {
 	localStorage.setItem("score", score);
 	localStorage.setItem("bestsScore", bestScore);
 	localStorage.setItem("board", JSON.stringify(board));
 };
-
+// update score
 var updateScore = function (increment){
 	// cool animation?
 	if (increment){
@@ -235,7 +240,7 @@ var updateScore = function (increment){
 	$("#score").text(score);
 	$("#bestScore").text(bestScore);
 };
-
+// start a new game
 var newGame = function (){
 	board = {};
 	score = 0;
@@ -246,7 +251,7 @@ var newGame = function (){
 	saveData();
 	$("#game-over").remove();
 };
-
+// load saved data
 var loadSavedData = function(){
 	var savedScore = localStorage.getItem("score");
 	if(savedScore){
@@ -264,7 +269,7 @@ var loadSavedData = function(){
 		newGame();
 	}
 };
-
+// display game over message
 var gameOverMessage = function (){
 	//alert("Game Over!");
 	$("<div></div>").appendTo("#board")
@@ -274,7 +279,7 @@ var gameOverMessage = function (){
 					.fadeIn();
 };
 
-
+// if key was pressed
 var keyPressed = function (dir){
 	var oldBoard = $.extend({},board);
 	if(dir =="left"){
@@ -286,7 +291,7 @@ var keyPressed = function (dir){
 	}else if (dir =="down"){
 		moveDown();
 	}
-
+	// if board changed
 	if(hasChanged(oldBoard)) {
 		addTile();
 		refreshBoard();
@@ -299,7 +304,7 @@ var keyPressed = function (dir){
 		}
 	}
 };
-
+// setup
 $(document).ready(function(){
 	createBoard();
 	//newGame();
@@ -309,7 +314,7 @@ $(document).ready(function(){
 	$("#newGame").click(function(){
 		newGame();
 	})
-
+	// key pressed
 	$(document).keydown(function (e){
 		//console.log("Pushed key. "+ e.which);
 		switch(e.which){
